@@ -35,6 +35,24 @@ class Risk extends PureComponent {
       }
     };
 
+    // TODO: remove this early return once we fix the Risk tab
+    return (
+      <div className="c-risk">
+        <div className="l-filters">
+          <div class="c-analyzer-filters">
+            <div class="wrapper">
+              <div class="row">
+                <div class="col" style={{color: 'white'}}>
+                  The Risk tool is currently unavailable as the site is undergoing maintenance.
+                  Please check back again soon to use this functionality.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+
     return (
       <div className="c-risk">
         <div className="l-filters">

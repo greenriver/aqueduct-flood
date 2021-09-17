@@ -102,6 +102,7 @@ class AnalyzerOutputs extends Component {
     const { filters, widgets } = this.props;
     const { flood, geogunit_unique_name } = filters;
 
+    return (<div></div>); // TODO: remove this early return once we fix the Risk tab
     return (
       <div className="c-risk-outputs">
         <div className="wrapper">
@@ -124,8 +125,8 @@ class AnalyzerOutputs extends Component {
                     if (params.type === 'annual_flood') return (
                       <Chart
                         spec={AnnualFloodSpec}
-                        params={{ 
-                          ...params, 
+                        params={{
+                          ...params,
                           ...WIDGET_TITLE_GENERATOR(params.type, filters)
                         }}
                         data={{ table: data }}
@@ -135,8 +136,8 @@ class AnalyzerOutputs extends Component {
                     if (params.type === 'flood_drivers') return (
                       <Chart
                         spec={FloodDriversSpec}
-                        params={{ 
-                          ...params, 
+                        params={{
+                          ...params,
                           ...WIDGET_TITLE_GENERATOR(params.type, filters),
                           chartTitleBottom: `Projected Change in ${flood} Flood Annual Expected ${getWidgetTitle(filters)} and Drivers in ${geogunit_unique_name}`
                         }}
