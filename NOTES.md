@@ -1,18 +1,11 @@
 * Reference: https://www.wri.org/aqueduct
 
-* Run app
-  docker-compose up web
-  visit http://localhost:3030
+## Questions
 
-* Mapbox base layers here:
-  "src/components/hazard/map/constants.js"
+* CBA map layers don't exist-- what should they be or where are they?
+  * This may be causing button to disappear after first click
 
-* Dataset ID hardcoded here?
-  "src/constants/hazard.js"
-  I think the problem is that this dataset isn't available/published.
-  Couldn't immediately find it in carto
+* Had to change CBA scenario key from 'rcp8p5' to "business as usual"
+  * Is this expected?
 
-* Is this how we get data?
-  "src/modules/layers/_.js"
-  REACT_APP_WRI_API_URL env var seems critical
-  REACT_APP_WRI_API_URL when set to //api.resourcewatch.org makes the local app fail like production I think.
+* Risk widgets are loading locally but not on pantheon, despite making the exact same requests

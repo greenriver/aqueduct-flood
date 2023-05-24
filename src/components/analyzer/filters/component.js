@@ -4,7 +4,7 @@ import { Field, CustomSelect } from 'aqueduct-components';
 import debounce from 'lodash/debounce';
 
 // constants
-import { SCENARIOS_OPTIONS } from 'constants/app';
+import { SCENARIO_OPTIONS } from 'constants/app';
 
 // utils
 import { generateModalOptions } from 'utils/modal';
@@ -149,7 +149,7 @@ class AnalyzerFilters extends PureComponent {
               >
                 <CustomSelect
                   instanceId="scenario"
-                  options={SCENARIOS_OPTIONS}
+                  options={SCENARIO_OPTIONS}
                   placeholder="Select a future scenario"
                   value={filters.scenario}
                   onChange={opt => {

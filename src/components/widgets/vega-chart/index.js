@@ -51,7 +51,7 @@ const defaultProps = {
   renderer: 'svg',
   enableHover: true,
   onNewView() {},
-  onParseError() {},
+  onParseError: console.error,
 };
 
 class Vega extends PureComponent {

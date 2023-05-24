@@ -5,7 +5,7 @@ import debounce from 'lodash/debounce';
 import Link from 'redux-first-router-link'
 
 // constants
-import { SCENARIOS_OPTIONS } from 'constants/app';
+import { SCENARIO_OPTIONS } from 'constants/app';
 
 // utils
 import { logEvent } from 'utils/analytics';
@@ -255,7 +255,7 @@ class AnalyzerCompareFilters extends PureComponent {
               >
                 <CustomSelect
                   instanceId="scenario"
-                  options={SCENARIOS_OPTIONS}
+                  options={SCENARIO_OPTIONS}
                   placeholder="Select a scenario"
                   value={filters.scenario}
                   onChange={opt => {
@@ -274,7 +274,7 @@ class AnalyzerCompareFilters extends PureComponent {
               >
                 <CustomSelect
                   instanceId="scenario-compare"
-                  options={SCENARIOS_OPTIONS}
+                  options={SCENARIO_OPTIONS}
                   placeholder="Select a scenario"
                   isDisabled={!filters.locationCompare}
                   value={filters.scenarioCompare}

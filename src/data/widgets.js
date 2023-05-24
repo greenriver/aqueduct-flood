@@ -89,17 +89,18 @@ export const WIDGETS = {
         url: 'https://www.wri.org/publication/aqueduct-floods'
       }]
     },
-    {
-      id: 'inundation_map',
-      type: 'side-map',
-      title: 'Inundation probability maps: current scenario vs. future scenario',
-      description: `<p>These maps show the probability of flooding event in 2010 given the current level of flood protection (left)
-        compared to the probability of flooding extent in future using the design flood protection (right).</p>`,
-      sources: [{
-        title: 'WRI Aqueduct Floods',
-        url: 'https://www.wri.org/publication/aqueduct-floods'
-      }]
-    },
+    // // TODO: put this back in once we've fixed the map layer issue.
+    // {
+    //   id: 'inundation_map',
+    //   type: 'side-map',
+    //   title: 'Inundation probability maps: current scenario vs. future scenario',
+    //   description: `<p>These maps show the probability of flooding event in 2010 given the current level of flood protection (left)
+    //     compared to the probability of flooding extent in future using the design flood protection (right).</p>`,
+    //   sources: [{
+    //     title: 'WRI Aqueduct Floods',
+    //     url: 'https://www.wri.org/publication/aqueduct-floods'
+    //   }]
+    // },
     {
       id: 'table',
       title: 'summary of benefits from design infrastructure',

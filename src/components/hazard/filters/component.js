@@ -15,7 +15,7 @@ import {
   COASTAL_PROJECTION_MODEL_OPTIONS,
   FLOOD_TYPES_OPTIONS,
 } from 'constants/hazard';
-import { SCENARIOS_OPTIONS } from 'constants/app';
+import { SCENARIO_OPTIONS } from 'constants/app';
 
 // utils
 import { generateModalOptions } from 'utils/modal';
@@ -123,7 +123,7 @@ class HazardFilters extends PureComponent {
                 <CustomSelect
                   instanceId="hazard-scenario"
                   isDisabled={isBaseline}
-                  options={SCENARIOS_OPTIONS}
+                  options={SCENARIO_OPTIONS}
                   placeholder="Select a scenario"
                   value={filters.scenario}
                   onChange={(opt) => {

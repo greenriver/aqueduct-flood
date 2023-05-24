@@ -4,7 +4,7 @@ import { createSelector } from 'reselect';
 import { parseLocations, parseCompareLocations } from 'modules/locations/selectors';
 
 // constants
-import { SCENARIOS_OPTIONS } from 'constants/app';
+import { RISK_SCENARIO_OPTIONS } from 'constants/app';
 
 const advancedSettings = state => state.filters.risk.advanced_settings;
 const floodType = state => state.filters.risk.flood;
@@ -27,7 +27,7 @@ export const getFilteredCompareLocations = createSelector([parseCompareLocations
 
 export const getScenarios = createSelector(
   [advancedSettings],
-  (_advancedSettings) => _advancedSettings ? SCENARIOS_OPTIONS : [SCENARIOS_OPTIONS[0]]
+  (_advancedSettings) => _advancedSettings ? RISK_SCENARIO_OPTIONS : [RISK_SCENARIO_OPTIONS[0]]
 );
 
 export default {

@@ -37,6 +37,13 @@ export const generateRiskDownloadURL = ({ id }, filters, format) => {
     ...restCommonParams
   } = common;
 
+  // Not sure why the existing_prot filter is being set (it's not in the UI)
+  // Manually setting it to "null" so the saveAs URL matches the data URL being
+  // used to populate the widget table.
+  if (!advancedSettings) {
+    restRiskFilters.existing_prot = "null";
+  };
+
   const widgetParams = queryString.stringify({
     ...restCommonParams,
     ...restRiskFilters,

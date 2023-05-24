@@ -1,11 +1,11 @@
 import { EXISTING_PROTECTION_LEVEL_OPTIONS } from 'constants/analyzer';
-import { SCENARIOS_OPTIONS } from 'constants/app';
+import { SCENARIO_OPTIONS } from 'constants/app';
 
 export const getUniqueVocabulary = (filters = {}, right = false) => {
   const { year, scenario } = filters;
 
-  const scenarioIndex = SCENARIOS_OPTIONS.findIndex(_scenario => _scenario.value === scenario);
-  const scenarioToSend = !right ? 'historical' : SCENARIOS_OPTIONS[scenarioIndex].value;
+  const scenarioIndex = SCENARIO_OPTIONS.findIndex(_scenario => _scenario.value === scenario);
+  const scenarioToSend = !right ? 'historical' : SCENARIO_OPTIONS[scenarioIndex].value;
   const model = right ? '0000GFDL-ESM2M' : '000000000WATCH';
 
   return `cba_inunriver_${year}_${scenarioToSend}_${model}_None_None`;

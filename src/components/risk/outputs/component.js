@@ -102,7 +102,6 @@ class AnalyzerOutputs extends Component {
     const { filters, widgets } = this.props;
     const { flood, geogunit_unique_name } = filters;
 
-    return (<div></div>); // TODO: remove this early return once we fix the Risk tab
     return (
       <div className="c-risk-outputs">
         <div className="wrapper">
