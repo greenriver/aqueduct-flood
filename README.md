@@ -82,4 +82,4 @@ You should be ready to work!
 - [Aqueduct Components](https://greenriver.github.io/aqueduct-components/) - https://github.com/greenriver/aqueduct-components
 
 
-cp -a dist/. ../wriflagship/web/applications/aqueduct/flood/
+cp -a build/. ../wriflagship/web/applications/aqueduct/floods/
