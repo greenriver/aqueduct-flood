@@ -145,9 +145,11 @@ class AnalyzerFilters extends PureComponent {
       setRiskCompareFilter,
       setWidgets,
       setWidgetsCompare,
-      scenarios
+      scenarios,
+      setModal
     } = this.props;
 
+    if (checked) setModal(generateModalOptions('info', 'show-advanced-settings'));
     setWidgets({ nextTab: checked ? 'advanced_risk' : 'risk' });
     setWidgetsCompare({ nextTab: checked ? 'advanced_risk' : 'risk' });
 
@@ -350,7 +352,7 @@ class AnalyzerFilters extends PureComponent {
             <div className="col-md-6">
               <div className="checkbox-container">
                 <Checkbox
-                  label="Show Advanced Settings"
+                  label="Customize Analisis"
                   name="advanced_settings"
                   theme="light"
                   checked={filters.advanced_settings}

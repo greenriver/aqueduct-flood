@@ -137,6 +137,11 @@ export const MODAL_INFO_DEFINITIONS = {
       Due to the complexity of the calculation, the Advanced analysis runs at a coarser scale than the default analysis. Therefore, Advanced results may look different than default results.
       </p>`
   },
+  'show-advanced-settings': {
+    description: `<p>The Custom Analysis feature allows users to adjust the risk analysis by changing the level of flood protection and selecting
+    different future scenarios. Due to the complexity of the calculation, the Custom Analysis runs on a coarser scale than the Default analysis.
+    Therefore, Custom results may look different from Standard results.</p>`
+  },
   // CBA
   'design-protection-standards': {
     title: 'Design Protection Standards',
