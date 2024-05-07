@@ -1,0 +1,79 @@
+@import 'src/css/settings';
+
+.c-modal-share {
+  .input-container {
+    display: flex;
+    .input {
+      background: none;
+      width: 100%;
+      border: 1px solid #dededd;
+      border-right: 0;
+      border-radius: 4px;
+      padding: 0.5rem;
+    }
+  }
+  > .input-buton {
+    position: relative;
+    z-index: 1;
+    right: calc(6.25rem / 2);
+    
+    border-radius: 1rem;
+    display: inline-block;
+  }
+  > .modal-title {
+    color: palette(gray, dark);
+    font-weight: $font-weight-semi-bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  > .modal-content {
+    margin: $space-1 * 2 0 0;
+
+    .content-key {
+      display: block;
+      margin: $space-1 * 2 0 0;
+      color: palette(gray, dark);
+      font-weight: $font-weight-semi-bold;
+    }
+
+    .content-value {
+      margin: $space-1 * 2 0 0;
+      color: palette(gray, dark);
+
+      button {
+        background-color: palette(blue, secondary);
+        color: white;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        ;
+      }
+      input {
+        width: 100%;
+      }
+      a {
+        color: palette(blue, secondary);
+      }
+
+      i {
+        font-style: italic;
+      }
+
+      strong {
+        font-weight: $font-weight-semi-bold;
+      }
+    }
+
+    .projection-model-table {
+      margin: $space-1 * 2 0 0;
+
+      table {
+        thead {
+          td {
+            font-weight: $font-weight-semi-bold;
+          }
+        }
+      }
+    }
+  }
+}

@@ -11,6 +11,7 @@ import ModalInfoWidget from 'components/ui/modals/modal-info-widget';
 
 // utils
 import { initGA, logPageView } from 'utils/analytics';
+import ModalShareLink from 'components/ui/modals/modal-share-link/component';
 
 class Layout extends PureComponent {
   static propTypes = {
@@ -53,6 +54,7 @@ class Layout extends PureComponent {
           {modalOptions.type === 'info' && <ModalInfo options={modalOptions} />}
           {modalOptions.type === 'widget-share' && <ModalEmbedWidget options={modalOptions} />}
           {modalOptions.type === 'widget-info' && <ModalInfoWidget options={modalOptions} />}
+          {modalOptions.type === 'share-link' && <ModalShareLink />}
         </Modal>
       </div>
     );

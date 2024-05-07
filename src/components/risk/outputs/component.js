@@ -98,6 +98,19 @@ class AnalyzerOutputs extends Component {
     logEvent('[AQ-Flood]', `risk tab: user downloads widget "${widget.id}" in format:`, option);
   }
 
+  handleShareLink = () => {
+    const {
+      setModal,
+    } = this.props;
+
+    setModal({
+      visible: true,
+      options: {
+        type: 'share-link',
+        }
+      });
+  }
+
   render() {
     const { filters, widgets } = this.props;
     const { flood, geogunit_unique_name } = filters;
@@ -116,6 +129,7 @@ class AnalyzerOutputs extends Component {
                     logEvent('[AQ-Flood]', `risk tab: user clicks on more info of widget "${widget.id}"`);
                   }}
                   onDownloadWidget={(option, _widget) => this.onDownloadWidget(option, _widget)}
+                  onShareLink={() => this.handleShareLink()}
                 >
                   {({ data, params = {} }) => {
 
