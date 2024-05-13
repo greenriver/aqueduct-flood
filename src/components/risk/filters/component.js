@@ -352,7 +352,7 @@ class AnalyzerFilters extends PureComponent {
             <div className="col-md-6">
               <div className="checkbox-container">
                 <Checkbox
-                  label="Customize Analisis"
+                  label="Customize Analysis"
                   name="advanced_settings"
                   theme="light"
                   checked={filters.advanced_settings}

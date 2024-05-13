@@ -346,7 +346,7 @@ class RiskFilters extends PureComponent {
           <div className="row">
             <div className="col-md-6">
               <Checkbox
-                label="Show Advanced Settings"
+                label="Customize Analysis"
                 name="advanced_settings"
                 theme="light"
                 checked={filters.advanced_settings}
