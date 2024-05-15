@@ -18,7 +18,6 @@ import MultiLineSpec from 'components/widgets/specs/cba/multi-line';
 
 // utils
 import {
-  getCbaEmbedURL,
   getCbaPreviewURL,
   generateCbaDownloadURL
 } from 'utils/share';
@@ -113,7 +112,7 @@ class AnalyzerCompareOutputs extends Component {
               })
             }
           },
-          embedURL: getCbaEmbedURL(widget, filters),
+          embedURL: getCbaPreviewURL(widget, filters),
           previewURL: `#${getCbaPreviewURL(widget, filters)}`,
         }
       }));

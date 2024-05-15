@@ -18,7 +18,7 @@ import FloodDriversSpec from 'components/widgets/specs/risk/advanced/flood_drive
 import LPCurveSpec from 'components/widgets/specs/risk/advanced/lp_curve';
 
 // utils
-import { getRiskEmbedURL, getRiskPreviewURL, generateRiskDownloadURL } from 'utils/share';
+import { getRiskPreviewURL, generateRiskDownloadURL } from 'utils/share';
 import { logEvent } from 'utils/analytics';
 
 // constants
@@ -91,8 +91,8 @@ class RiskCompareOutputs extends Component {
               })
             }
           },
-          embedURL: getRiskEmbedURL(widget, filters),
-          previewURL: getRiskPreviewURL(widget, filters),
+          embedURL: getRiskPreviewURL(widget, filters),
+          previewURL: `#${getRiskPreviewURL(widget, filters)}`,
         }
       }));
     }

@@ -45,7 +45,7 @@ class ModalEmbedWidget extends PureComponent {
     const { params } = widget;
     const { title } = params;
     const shareableUrl  = `${window.location.origin}${window.location.pathname}#${embedURL}`;
-    const iframeUrl = `<iframe src="${shareableUrl}" width="${width}" height="${height}" frameBorder="0"></frame>`;
+    const iframeUrl = `<iframe src="${shareableUrl}" width="${width}" height="${height}" frameBorder="0"></iframe>`;
 
     return (
       <div className="c-modal-embed-widget">
