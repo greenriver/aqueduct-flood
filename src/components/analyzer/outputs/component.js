@@ -132,7 +132,6 @@ class AnalyzerOutputs extends Component {
 
     if (!allowToLoadWidgets) return false;
 
-    return (<div></div>); // TODO: remove this early return once we fix the CBA tab
     return (
       <div className="c-analyzer-outputs">
         <div className="wrapper">

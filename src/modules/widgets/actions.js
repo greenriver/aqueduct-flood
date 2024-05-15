@@ -42,7 +42,9 @@ export const getWidgetCostData = createThunkAction('WIDGETS__GET-CBA-DATA', (wid
     dispatch(setError({ id: widgetId, error: null }));
     dispatch(setLoading({ id: widgetId, loading: true }));
 
-    fetch(`${process.env.REACT_APP_API_URL}/cba/widget/${widgetId}?${params}`, {})
+    fetch(`${process.env.REACT_APP_API_URL}/cba/widget/${widgetId}?${params}`, {headers: {
+      "Content-Type": "application/json"
+    },})
       .then((response) => {
         if (response.ok) return response.json();
         throw response;

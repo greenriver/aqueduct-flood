@@ -79,7 +79,8 @@ class AnalyzerInputs extends PureComponent {
 
     this.state = {
       existingProtValue: existingProt,
-      estimatedCosts
+      estimatedCosts,
+      costToggle: true
     };
   }
 
@@ -209,7 +210,7 @@ class AnalyzerInputs extends PureComponent {
   render() {
     const { filters, inputState, onChangeFilter, setModal } = this.props;
     const { loading } = inputState;
-    const { existingProtValue, protFut, estimatedCosts } = this.state;
+    const { existingProtValue, protFut, estimatedCosts, costToggle } = this.state;
 
     return (
       <div className="c-analyzer-inputs">
@@ -371,12 +372,33 @@ class AnalyzerInputs extends PureComponent {
             </Button>
           </div>
           <div className="selectors-container">
+            <div className='toggle-wrapper'>
+              <span>Adjust by factor</span>
+              <div className='toggle'>
+                <button onClick={() => this.setState({ costToggle: !costToggle})} className={`toggle-button ${!costToggle ? 'toggle-on': ''}`} />
+                <button onClick={() => this.setState({ costToggle: !costToggle})} className={`toggle-button ${costToggle ? 'toggle-on': ''}`} />
+              </div>
+            </div>
+            
             <Field
               name="user-urb-cost"
               theme="dark"
-              label="Unit Cost ($million/meter/kilometer)"
+              label="Adjustable Construction Cost"
               className="-bolder"
             >
+              { costToggle ? 
+              <Slider
+                name="user-urb-cost-slider"
+                min={0.8}
+                max={1.21}
+                step={0.01}
+                theme="dark"
+                value={estimatedCosts/7}
+                formatValue={value => `${(value*100).toFixed(0)}%`}
+                onChange={(value) => this.setState({ estimatedCosts: value*7})}
+                onAfterChange={value => { onChangeFilter({ estimated_costs: value*7 }) }}
+              />
+              :
               <Slider
                 name="user-urb-cost-slider"
                 min={UNIT_COST_OPTIONS[0]}
@@ -384,10 +406,11 @@ class AnalyzerInputs extends PureComponent {
                 step={0.01}
                 theme="dark"
                 value={estimatedCosts}
+                formatValue={value => `${value} ($million/meter/kilometer)`}
                 defaultValue={estimatedCosts}
                 onChange={(value) => this.setState({ estimatedCosts: value })}
                 onAfterChange={value => { onChangeFilter({ estimated_costs: value }) }}
-              />
+              />}
             </Field>
             <Field
               name="discount-rate"
