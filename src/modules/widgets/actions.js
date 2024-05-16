@@ -16,28 +16,28 @@ export const setError = createAction('WIDGETS__SET-ERROR');
 
 export const getWidgetCostData = createThunkAction('WIDGETS__GET-CBA-DATA', (widgetId) =>
   (dispatch, getState) => {
-    const { filters, app: { isNullTime } } = getState();
+    const { filters } = getState();
     const { common, cba } = filters;
     const widgetParams = {
       ...common,
       ...cba,
-      ...{ existing_prot: (isNullTime || cba.existing_prot === cba.original_existing_prot) ? 'null' : cba.existing_prot },
+      // ...{ existing_prot: (isNullTime || cba.existing_prot === cba.original_existing_prot) ? 'null' : cba.existing_prot },
       // ...{ prot_fut: (isNullTime && cba.prot_fut === cba.original_prot_fut) ? 'null' : cba.prot_fut },
-      ...{ estimated_costs: (isNullTime || cba.estimated_costs === cba.original_estimated_costs) ? 'null' : cba.estimated_costs },
+      // ...{ estimated_costs: (isNullTime || cba.estimated_costs === cba.original_estimated_costs) ? 'null' : cba.estimated_costs },
       ...{ discount_rate: filters.cba.discount_rate / 100 },
       ...{ om_costs: filters.cba.om_costs / 100 },
       ...{ user_urb_cost: filters.cba.user_urb_cost || 'null' },
       ...{ user_rur_cost: 'null' }
     };
 
-    const {
-      original_existing_prot,
-      original_prot_fut,
-      original_estimated_costs,
-      ...restParams
-    } = widgetParams;
+    // const {
+    //   original_existing_prot,
+    //   original_prot_fut,
+    //   original_estimated_costs,
+    //   ...restParams
+    // } = widgetParams;
 
-    const params = queryString.stringify(restParams);
+    const params = queryString.stringify(widgetParams);
 
     dispatch(setError({ id: widgetId, error: null }));
     dispatch(setLoading({ id: widgetId, loading: true }));
@@ -128,7 +128,7 @@ export const getWidgetRiskData = createThunkAction('WIDGETS__GET-RISK-DATA', (wi
       ...restCommonParams,
       ...{
         ...restRiskFilters,
-        existing_prot: (advancedSettings && restRiskFilters.existing_prot) || 'null'
+        // existing_prot: (advancedSettings && restRiskFilters.existing_prot) || 'null'
       }
     });
 

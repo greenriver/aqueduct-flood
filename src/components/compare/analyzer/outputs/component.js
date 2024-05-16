@@ -86,7 +86,7 @@ class AnalyzerCompareOutputs extends Component {
             })
           }
         },
-        embedURL: getCbaPreviewURL(widget, filters)
+        embedURL: `#${getCbaPreviewURL(widget, filters)}`
       }
     }));
 
