@@ -66,7 +66,7 @@ class RiskCompareOutputs extends Component {
             title: replace(widget.params.title, { ...filters.common, ...filters.risk })
           }
         },
-        embedURL: getRiskPreviewURL(widget, filters)
+        embedURL: `#${getRiskPreviewURL(widget, filters)}`
       }
     }));
 

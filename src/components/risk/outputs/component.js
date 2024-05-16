@@ -62,7 +62,7 @@ class AnalyzerOutputs extends Component {
             title: replace(widget.params.title, { ...filters, widget_title: getWidgetTitle(filters) })
           }
         },
-        embedURL: getRiskPreviewURL(widget, originalFormatFilters),
+        embedURL: `#${getRiskPreviewURL(widget, originalFormatFilters)}`,
       }
     }));
   }

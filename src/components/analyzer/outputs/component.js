@@ -16,7 +16,6 @@ import MultiLineSpec from 'components/widgets/specs/cba/multi-line';
 
 // utils
 import {
-  getCbaEmbedURL,
   getCbaPreviewURL,
   generateCbaDownloadURL
 } from 'utils/share';
@@ -82,7 +81,7 @@ class AnalyzerOutputs extends Component {
             })
           }
         },
-        embedURL: getCbaPreviewURL(widget, originalFormatFilters)
+        embedURL: `#${getCbaPreviewURL(widget, originalFormatFilters)}`
       }
     }));
   }
@@ -109,8 +108,8 @@ class AnalyzerOutputs extends Component {
               })
             }
           },
-          embedURL: getCbaEmbedURL(widget, originalFormatFilters),
-          previewURL: getCbaPreviewURL(widget, filters),
+          embedURL: getCbaPreviewURL(widget, originalFormatFilters),
+          previewURL: `#${getCbaPreviewURL(widget, originalFormatFilters)}`,
         }
       }));
     }

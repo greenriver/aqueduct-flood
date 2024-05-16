@@ -7,10 +7,12 @@ import { getWidgetCostData } from 'modules/widgets/actions';
 export default connect(
   (state, { params }) => {
     const { widgets } = state;
-    const { id } = params; // widget id
+
+    // widget id
+    const { id } = params;
 
     return {
-      params: params,
+      params,
       widget: widgets.find(widget => widget.id === id)
     };
   },

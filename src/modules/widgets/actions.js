@@ -22,7 +22,7 @@ export const getWidgetCostData = createThunkAction('WIDGETS__GET-CBA-DATA', (wid
       ...common,
       ...cba,
       ...{ existing_prot: (isNullTime || cba.existing_prot === cba.original_existing_prot) ? 'null' : cba.existing_prot },
-      ...{ prot_fut: (isNullTime && cba.prot_fut === cba.original_prot_fut) ? 'null' : cba.prot_fut },
+      // ...{ prot_fut: (isNullTime && cba.prot_fut === cba.original_prot_fut) ? 'null' : cba.prot_fut },
       ...{ estimated_costs: (isNullTime || cba.estimated_costs === cba.original_estimated_costs) ? 'null' : cba.estimated_costs },
       ...{ discount_rate: filters.cba.discount_rate / 100 },
       ...{ om_costs: filters.cba.om_costs / 100 },
