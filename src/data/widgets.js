@@ -65,7 +65,7 @@ export const WIDGETS = {
     }
   ],
   hazard: [],
-  'cba': [
+  cba: [
     {
       id: 'net_benefits',
       title: 'cumulative net benefits from {{implementation_start}} through {{end}}',

@@ -65,4 +65,11 @@
     text-wrap: nowrap;
     transform: none;
   }
+  .cost-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    font-style: italic;
+    font-size: 0.8rem;
+  }
 }
