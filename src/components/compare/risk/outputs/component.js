@@ -88,6 +88,7 @@ class RiskCompareOutputs extends Component {
               title: replace(widget.params.title, { 
                 ...filters.common, 
                 ...filters.risk,
+                widget_title: getWidgetTitle(filters.risk)
               })
             }
           },

@@ -80,7 +80,7 @@ class AnalyzerInputs extends PureComponent {
     this.state = {
       existingProtValue: existingProt,
       estimatedCosts,
-      costToggle: true
+      costToggle: false
     };
   }
 
@@ -386,7 +386,7 @@ class AnalyzerInputs extends PureComponent {
               label="Adjustable Construction Cost"
               className="-bolder"
             >
-              { costToggle ? 
+              { !costToggle ? 
               <Slider
                 name="user-urb-cost-slider"
                 min={0.8}
@@ -411,6 +411,10 @@ class AnalyzerInputs extends PureComponent {
                 onChange={(value) => this.setState({ estimatedCosts: value })}
                 onAfterChange={value => { onChangeFilter({ estimated_costs: value }) }}
               />}
+              <div className='cost-labels'>
+                <div>Less expensive</div>
+                <div>More expensive</div>
+              </div>
             </Field>
             <Field
               name="discount-rate"
