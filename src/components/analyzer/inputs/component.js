@@ -79,7 +79,7 @@ class AnalyzerInputs extends PureComponent {
 
     this.state = {
       existingProtValue: existingProt,
-      estimatedCosts,
+      estimatedCosts: estimatedCosts * 7,
       costToggle: false
     };
   }
@@ -138,7 +138,7 @@ class AnalyzerInputs extends PureComponent {
       this.setState({
         existingProtValue: nextExistingProt,
         protFut: AnalyzerInputs.getProtFutValue(nextExistingProt),
-        estimatedCosts: nextEstimatedCosts
+        estimatedCosts: nextEstimatedCosts * 7
       });
     }
 
@@ -212,6 +212,7 @@ class AnalyzerInputs extends PureComponent {
     const { loading } = inputState;
     const { existingProtValue, protFut, estimatedCosts, costToggle } = this.state;
 
+    console.log({estimatedCosts})
     return (
       <div className="c-analyzer-inputs">
         {loading && <Spinner />}
@@ -407,7 +408,6 @@ class AnalyzerInputs extends PureComponent {
                 theme="dark"
                 value={estimatedCosts}
                 formatValue={value => `${value} ($million/meter/kilometer)`}
-                defaultValue={estimatedCosts}
                 onChange={(value) => this.setState({ estimatedCosts: value })}
                 onAfterChange={value => { onChangeFilter({ estimated_costs: value }) }}
               />}
