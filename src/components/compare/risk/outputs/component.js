@@ -77,6 +77,19 @@ class RiskCompareOutputs extends Component {
     logEvent('[AQ-Flood]', `risk compare tab: user clicks on more info of widget "${widget.id}"`);
   }
 
+  handleShareLink = () => {
+    const {
+      setModal,
+    } = this.props;
+
+    setModal({
+      visible: true,
+      options: {
+        type: 'share-link',
+        }
+      });
+  }
+
   onDownloadWidget = (option, widget, filters) => {
     const { setModal } = this.props;
 
@@ -132,6 +145,7 @@ class RiskCompareOutputs extends Component {
                   params={{ id: widget.id, filters }}
                   onMoreInfo={() => this.onMoreInfo(widget, originalFormatFilters)}
                   onDownloadWidget={(option, _widget) => this.onDownloadWidget(option, _widget, originalFormatFilters)}
+                  onShareLink={() => this.handleShareLink()}
                 >
                   {({ data, params = {} }) => {
 
@@ -177,6 +191,7 @@ class RiskCompareOutputs extends Component {
                     onShareWidget={() => this.onShareWidget(widget, true)}
                     onMoreInfo={() => this.onMoreInfo(widget, originalFormatCompareFilters)}
                     onDownloadWidget={(option, _widget) => this.onDownloadWidget(option, _widget, originalFormatCompareFilters)}
+                    onShareLink={() => this.handleShareLink()}
                   >
                     {({ data, params = {} }) => {
 
