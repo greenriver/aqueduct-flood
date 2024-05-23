@@ -86,6 +86,19 @@ class AnalyzerOutputs extends Component {
     }));
   }
 
+  handleShareLink = () => {
+    const {
+      setModal,
+    } = this.props;
+
+    setModal({
+      visible: true,
+      options: {
+        type: 'share-link',
+        }
+      });
+  }
+
   onDownloadWidget = (option, widget) => {
     const {
       setModal,
@@ -167,6 +180,7 @@ class AnalyzerOutputs extends Component {
                         logEvent('[AQ-Flood]', `analyzer tab: user clicks in more info for widget ${widget.id}`);
                       }}
                       onDownloadWidget={(option, _widget) => this.onDownloadWidget(option, _widget)}
+                      onShareLink={() => this.handleShareLink()}
                     >
                       {({ data, params }) => {
 
