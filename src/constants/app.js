@@ -14,3 +14,9 @@ export const RISK_SCENARIO_OPTIONS = [
   { label: 'Optimistic', value: 'optimistic' },
   { label: 'Pessimistic', value: 'pessimistic' }
 ];
+
+export const CBA_SCENARIO_OPTIONS = [
+  { label: 'Business as usual', value: "business as usual", default: true },
+  { label: 'Optimistic', value: 'optimistic' },
+  { label: 'Pessimistic', value: 'pessimistic' }
+];
