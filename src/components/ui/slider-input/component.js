@@ -20,6 +20,7 @@ const SliderInput = (props) => {
 
   const handleChange = (evt) => {
     onChange(+evt.currentTarget.value);
+    onAfterChange(+evt.currentTarget.value);
   };
 
   const handleKeyPress = (evt) => {
