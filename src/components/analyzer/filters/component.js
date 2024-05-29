@@ -74,7 +74,7 @@ class AnalyzerFilters extends PureComponent {
       .then((defaults) => {
         setInput({ loading: false });
         setCostFilter({
-          user_urb_cost: defaults.estimated_costs * 7,
+          user_urb_cost: defaults.estimated_costs < 2 ? defaults.estimated_costs * 7 : defaults.estimated_costs,
           existing_prot: defaults.existing_prot,
           prot_fut: defaults.prot_fut,
         });
