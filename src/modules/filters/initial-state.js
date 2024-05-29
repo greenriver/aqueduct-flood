@@ -23,9 +23,9 @@ export default {
   },
   // cost-benefit analyzer
   cba: {
-    original_existing_prot: null,
-    original_prot_fut: null,
-    original_estimated_costs: null,
+    // original_existing_prot: null,
+    // original_prot_fut: null,
+    // original_estimated_costs: null,
     existing_prot: null,
     prot_fut: null,
     ref_year: 2050,
@@ -35,7 +35,7 @@ export default {
     benefits_start: 2025,
     user_urb_cost: null,
     discount_rate: 5,
-    estimated_costs: null,
+    // estimated_costs: null,
     om_costs: 1
   }
 };

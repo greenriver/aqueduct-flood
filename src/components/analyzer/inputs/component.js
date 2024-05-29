@@ -67,7 +67,7 @@ class AnalyzerInputs extends PureComponent {
     const { filters } = props;
     const {
       existing_prot: existingProt,
-      estimated_costs: estimatedCosts
+      user_urb_cost: estimatedCosts,
     } = filters;
     const indexExistingProtection = EXISTING_PROTECTION_LEVEL_OPTIONS.findIndex(opt => opt === existingProt);
     const nextIndex = indexExistingProtection + 1 >= EXISTING_PROTECTION_LEVEL_OPTIONS.length ?
@@ -79,7 +79,7 @@ class AnalyzerInputs extends PureComponent {
 
     this.state = {
       existingProtValue: existingProt,
-      estimatedCosts: estimatedCosts * 7,
+      estimatedCosts,
       costToggle: false
     };
   }
@@ -102,12 +102,9 @@ class AnalyzerInputs extends PureComponent {
         .then((defaults) => {
           setInput({ loading: false });
           onChangeFilter({
-            estimated_costs: defaults.estimated_costs,
+            user_urb_cost: defaults.estimated_costs * 7,
             existing_prot: defaults.existing_prot,
             prot_fut: defaults.prot_fut,
-            original_existing_prot: defaults.existing_prot,
-            original_prot_fut: defaults.prot_fut,
-            original_estimated_costs: defaults.estimated_costs
           });
           setExistingProt(defaults.existing_prot);
           setProtFut(defaults.prot_fut);
@@ -119,7 +116,7 @@ class AnalyzerInputs extends PureComponent {
     const {
       existing_prot: nextExistingProt,
       prot_fut: nextProtFut,
-      estimated_costs: nextEstimatedCosts
+      user_urb_cost: nextEstimatedCosts
     } = nextProps.filters;
     const { filters } = this.props;
     const { existing_prot: existingProt, prot_fut: protFut } = filters;
@@ -138,7 +135,7 @@ class AnalyzerInputs extends PureComponent {
       this.setState({
         existingProtValue: nextExistingProt,
         protFut: AnalyzerInputs.getProtFutValue(nextExistingProt),
-        estimatedCosts: nextEstimatedCosts * 7
+        estimatedCosts: nextEstimatedCosts
       });
     }
 
@@ -212,7 +209,6 @@ class AnalyzerInputs extends PureComponent {
     const { loading } = inputState;
     const { existingProtValue, protFut, estimatedCosts, costToggle } = this.state;
 
-    console.log({estimatedCosts})
     return (
       <div className="c-analyzer-inputs">
         {loading && <Spinner />}
@@ -396,8 +392,8 @@ class AnalyzerInputs extends PureComponent {
                 theme="dark"
                 value={estimatedCosts/7}
                 formatValue={value => `${(value*100).toFixed(0)}%`}
-                onChange={(value) => this.setState({ estimatedCosts: value*7})}
-                onAfterChange={value => { onChangeFilter({ estimated_costs: value*7 }) }}
+                onChange={(value) => this.setState({ estimatedCosts: (value*7).toFixed(2)})}
+                onAfterChange={value => { onChangeFilter({ user_urb_cost: (value*7).toFixed(2) }) }}
               />
               :
               <Slider
@@ -407,9 +403,9 @@ class AnalyzerInputs extends PureComponent {
                 step={0.01}
                 theme="dark"
                 value={estimatedCosts}
-                formatValue={value => `${value} ($million/meter/kilometer)`}
-                onChange={(value) => this.setState({ estimatedCosts: value })}
-                onAfterChange={value => { onChangeFilter({ estimated_costs: value }) }}
+                formatValue={value => `${(value).toFixed(2)} ($million/meter/kilometer)`}
+                onChange={(value) => this.setState({ estimatedCosts: (value).toFixed(2) })}
+                onAfterChange={value => { onChangeFilter({ user_urb_cost: (value).toFixed(2) }) }}
               />}
               <div className='cost-labels'>
                 <div>Less expensive</div>
