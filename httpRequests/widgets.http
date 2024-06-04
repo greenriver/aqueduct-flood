@@ -1,0 +1,35 @@
+
+# @host = http://localhost:5100/api/v1/aqueduct/analysis
+# @host = https://api.resourcewatch.org/v1/aqueduct/analysis
+@host = https://staging-api.resourcewatch.org/aqueduct/analysis
+
+GET {{host}}/cba/widget/net_benefits
+  ?benefits_start=2030
+  &discount_rate=0.01
+  &existing_prot=10
+  &implementation_end=2030
+  &implementation_start=2020
+  &infrastructure_life=80
+  &om_costs=0.01
+  &prot_fut=50
+  &ref_year=2030
+  &scenario=pessimistic
+  &user_rur_cost=null 
+  &user_urb_cost=5.6
+  &geogunit_unique_name=Mexico
+
+###
+GET {{host}}/cba/widget/net_benefits
+  ?benefits_start=2030
+  &discount_rate=0.01
+  &existing_prot=10
+  &geogunit_unique_name=Mexico
+  &implementation_end=2030
+  &implementation_start=2020
+  &infrastructure_life=80
+  &om_costs=0.01
+  &prot_fut=50
+  &ref_year=2030
+  &scenario=pessimistic
+  &user_rur_cost=null 
+  &user_urb_cost=5.6
