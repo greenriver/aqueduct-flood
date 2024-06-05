@@ -5,7 +5,7 @@ import debounce from 'lodash/debounce';
 import Link from 'redux-first-router-link'
 
 // constants
-import { SCENARIO_OPTIONS } from 'constants/app';
+import { CBA_SCENARIO_OPTIONS } from 'constants/app';
 
 // utils
 import { logEvent } from 'utils/analytics';
@@ -60,7 +60,7 @@ class AnalyzerCompareFilters extends PureComponent {
         .then((defaults) => {
           setInputCompare({ loading: false });
           setCostCompareFilter({
-            estimated_costs: defaults.estimated_costs,
+            user_urb_cost: defaults.estimated_costs < 2 ? defaults.estimated_costs * 7 : defaults.estimated_costs,
             existing_prot: defaults.existing_prot,
             prot_fut: defaults.prot_fut
           });
@@ -101,7 +101,7 @@ class AnalyzerCompareFilters extends PureComponent {
       .then((defaults) => {
         setInput({ loading: false });
         setCostFilter({
-          estimated_costs: defaults.estimated_costs,
+          user_urb_cost: defaults.estimated_costs < 2 ? defaults.estimated_costs * 7 : defaults.estimated_costs,
           existing_prot: defaults.existing_prot,
           prot_fut: defaults.prot_fut
         });
@@ -141,7 +141,7 @@ class AnalyzerCompareFilters extends PureComponent {
         } = defaults;
         setInputCompare({ loading: false });
         setCostCompareFilter({
-          estimated_costs,
+          user_urb_cost: estimated_costs < 2 ? estimated_costs * 7 : estimated_costs,
           existing_prot,
           prot_fut
         });
@@ -255,7 +255,7 @@ class AnalyzerCompareFilters extends PureComponent {
               >
                 <CustomSelect
                   instanceId="scenario"
-                  options={SCENARIO_OPTIONS}
+                  options={CBA_SCENARIO_OPTIONS}
                   placeholder="Select a scenario"
                   value={filters.scenario}
                   onChange={opt => {
@@ -274,7 +274,7 @@ class AnalyzerCompareFilters extends PureComponent {
               >
                 <CustomSelect
                   instanceId="scenario-compare"
-                  options={SCENARIO_OPTIONS}
+                  options={CBA_SCENARIO_OPTIONS}
                   placeholder="Select a scenario"
                   isDisabled={!filters.locationCompare}
                   value={filters.scenarioCompare}
