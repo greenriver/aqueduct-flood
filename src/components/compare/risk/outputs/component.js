@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { replace } from 'aqueduct-components';
 import { Base64 } from 'js-base64';
 import isEqual from 'lodash/isEqual';
+import html2canvas from 'html2canvas';
 
 // componets
 import Widget from 'components/risk/widget';
@@ -90,7 +91,7 @@ class RiskCompareOutputs extends Component {
       });
   }
 
-  onDownloadWidget = (option, widget, filters) => {
+  onDownloadWidget = (option, widget, filters, isCompare=false) => {
     const { setModal } = this.props;
 
     if (option === 'embed') {
@@ -117,6 +118,25 @@ class RiskCompareOutputs extends Component {
 
     if (option === 'json') generateRiskDownloadURL(widget, filters);
 
+    if (option === 'image') {
+      const { id } = widget;
+
+      const widgetElement = document.getElementById(isCompare ? `${id}-compare` : id);
+
+      html2canvas(widgetElement).then((canvas) => {
+        const data = canvas.toDataURL('image/jpg'),
+        link = document.createElement('a');
+  
+        link.href = data;
+        link.download = `${id}-${isCompare ? 'compare-' : ''}image.jpg`;
+  
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      })
+
+    }
+
     logEvent('[AQ-Flood]', `risk compare tab: user downloads widget "${widget.id}" in format:`, option);
   }
 
@@ -139,7 +159,7 @@ class RiskCompareOutputs extends Component {
         <div className="wrapper">
           {widgetsReadyToDisplay && widgets.map(widget => (
             <div key={widget.id} className="row">
-              <div className="col-md-6">
+              <div className="col-md-6" id={widget.id}>
                 <Widget
                   title={replace(widget.params.title, { ...filters, widget_title: getWidgetTitle(filters) })}
                   params={{ id: widget.id, filters }}
@@ -184,13 +204,13 @@ class RiskCompareOutputs extends Component {
                 </Widget>
               </div>
               {widgetsCompareReadyToDisplay && (
-                <div className="col-md-6">
+                <div className="col-md-6" id={`${widget.id}-compare`}>
                   <WidgetCompare
                     title={replace(widget.params.title, { ...filtersCompare, widget_title: getWidgetTitle(filtersCompare) })}
                     params={{ id: widget.id, filtersCompare }}
                     onShareWidget={() => this.onShareWidget(widget, true)}
                     onMoreInfo={() => this.onMoreInfo(widget, originalFormatCompareFilters)}
-                    onDownloadWidget={(option, _widget) => this.onDownloadWidget(option, _widget, originalFormatCompareFilters)}
+                    onDownloadWidget={(option, _widget) => this.onDownloadWidget(option, _widget, originalFormatCompareFilters, true)}
                     onShareLink={() => this.handleShareLink()}
                   >
                     {({ data, params = {} }) => {

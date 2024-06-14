@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { replace } from 'aqueduct-components';
+import html2canvas from 'html2canvas';
 
 // components
 import Widget from 'components/analyzer/widget';
@@ -106,7 +107,7 @@ class AnalyzerCompareOutputs extends Component {
       });
   }
 
-  onDownloadWidget = (option, widget, filters) => {
+  onDownloadWidget = (option, widget, filters, isCompare=false) => {
     const { setModal } = this.props;
 
     if (option === 'embed') {
@@ -132,6 +133,25 @@ class AnalyzerCompareOutputs extends Component {
     }
 
     if (['json', 'csv'].includes(option)) generateCbaDownloadURL(widget, filters, option);
+
+    if (option === 'image') {
+      const { id } = widget;
+
+      const widgetElement = document.getElementById(isCompare ? `${id}-compare` : id);
+
+      html2canvas(widgetElement).then((canvas) => {
+        const data = canvas.toDataURL('image/jpg'),
+        link = document.createElement('a');
+  
+        link.href = data;
+        link.download = `${id}-${isCompare ? 'compare-' : ''}image.jpg`;
+  
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      })
+
+    }
 
     logEvent('[AQ-Flood]', `hazard tab: user downloads widget "${widget.id}" in format:`, option);
   }
@@ -159,7 +179,7 @@ class AnalyzerCompareOutputs extends Component {
         <div className="wrapper">
           {widgetsReadyToDisplay && widgets.map(widget => (
             <div key={widget.id} className="row">
-              <div className="col-md-6">
+              <div className="col-md-6" id={widget.id}>
                 {widget.id === 'inundation_map' ? (
                   <WidgetMap
                     title={replace(widget.params.title, filters)}
@@ -201,7 +221,7 @@ class AnalyzerCompareOutputs extends Component {
                   )}
               </div>
               {widgetsCompareReadyToDisplay && (
-                <div className="col-md-6">
+                <div className="col-md-6" id={`${widget.id}-compare`}>
                   {widget.id === 'inundation_map' ? (
                     <WidgetMapCompare
                       title={replace(widget.params.title, filtersCompare)}
@@ -225,7 +245,7 @@ class AnalyzerCompareOutputs extends Component {
                         )}
                         params={{ id: widget.id, filtersCompare }}
                         onMoreInfo={() => this.onMoreInfo(widget, originalFormatCompareFilters)}
-                        onDownloadWidget={(option, _widget) => this.onDownloadWidget(option, _widget, originalFormatCompareFilters)}
+                        onDownloadWidget={(option, _widget) => this.onDownloadWidget(option, _widget, originalFormatCompareFilters, true)}
                         onShareLink={() => this.handleShareLink()}
                       >
                         {({ data, params = {} }) => {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { replace } from 'aqueduct-components';
 import isEqual from 'lodash/isEqual';
+import html2canvas from 'html2canvas';
 
 // components
 import Widget from 'components/risk/widget';
@@ -95,6 +96,25 @@ class AnalyzerOutputs extends Component {
 
     if (['json', 'csv'].includes(option)) generateRiskDownloadURL(widget, originalFormatFilters, option);
 
+    if (option === 'image') {
+      const { id } = widget;
+
+      const widgetElement = document.getElementById(id);
+
+      html2canvas(widgetElement).then((canvas) => {
+        const data = canvas.toDataURL('image/jpg'),
+        link = document.createElement('a');
+  
+        link.href = data;
+        link.download = `${id}-image.jpg`;
+  
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      })
+
+    }
+
     logEvent('[AQ-Flood]', `risk tab: user downloads widget "${widget.id}" in format:`, option);
   }
 
@@ -120,7 +140,7 @@ class AnalyzerOutputs extends Component {
         <div className="wrapper">
           <div className="container">
             {widgets.map(widget => (
-              <div key={widget.id} className="widget-row">
+              <div key={widget.id} className="widget-row" id={widget.id}>
                 <Widget
                   title={replace(widget.params.title, { ...filters, widget_title: getWidgetTitle(filters) })}
                   params={{ id: widget.id, filters }}

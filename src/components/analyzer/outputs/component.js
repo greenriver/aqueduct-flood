@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { replace } from 'aqueduct-components';
+import html2canvas from 'html2canvas';
 
 // components
 import Widget from 'components/analyzer/widget';
@@ -129,6 +130,25 @@ class AnalyzerOutputs extends Component {
 
     if (['json', 'csv'].includes(option)) generateCbaDownloadURL(widget, originalFormatFilters, option);
 
+    if (option === 'image') {
+      const { id } = widget;
+
+      const widgetElement = document.getElementById(id);
+
+      html2canvas(widgetElement).then((canvas) => {
+        const data = canvas.toDataURL('image/jpg'),
+        link = document.createElement('a');
+  
+        link.href = data;
+        link.download = `${id}-image.jpg`;
+  
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      })
+
+    }
+
     logEvent('[AQ-Flood]', `analyser tab: user downloads widget "${widget.id}" in format:`, option);
   }
 
@@ -149,7 +169,7 @@ class AnalyzerOutputs extends Component {
         <div className="wrapper">
           <div className="container">
             {widgets.map(widget => (
-              <div key={widget.id} className="widget-row">
+              <div key={widget.id} className="widget-row" id={widget.id}>
                 {widget.id === 'inundation_map' ? (
                   <WidgetMap
                     title={replace(widget.params.title, filters)}
