@@ -128,7 +128,7 @@ export const getWidgetRiskData = createThunkAction('WIDGETS__GET-RISK-DATA', (wi
       ...restCommonParams,
       ...{
         ...restRiskFilters,
-        // existing_prot: (advancedSettings && restRiskFilters.existing_prot) || 'null'
+        existing_prot: (advancedSettings && restRiskFilters.existing_prot) || 'null'
       }
     });
 
