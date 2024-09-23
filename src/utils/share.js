@@ -4,6 +4,7 @@ import { saveAs } from 'file-saver';
 
 export const getCbaEmbedURL = ({ id }, filters) => `/embed/cba/widget/${id}?p=${Base64.encode(JSON.stringify(filters))}`;
 export const getCbaPreviewURL = ({ id }, filters) => `/preview/cba/widget/${id}?p=${Base64.encode(JSON.stringify(filters))}`
+export const getCbaReportURL = ({ id }, filters) => `/report/cba/widget/${id}?p=${Base64.encode(JSON.stringify(filters))}`
 export const generateCbaDownloadURL = ({ id }, filters, format) => {
   const { common, cba } = filters;
   const widgetParams = queryString.stringify({
@@ -21,6 +22,7 @@ export const generateCbaDownloadURL = ({ id }, filters, format) => {
 
 export const getRiskEmbedURL = ({ id }, filters) => `/embed/${filters.advanced_settings ? 'advanced_risk' : 'risk'}/widget/${id}?p=${Base64.encode(JSON.stringify(filters))}`;
 export const getRiskPreviewURL = ({ id }, filters) => `/preview/${filters.advanced_settings ? 'advanced_risk' : 'risk'}/widget/${id}?p=${Base64.encode(JSON.stringify(filters))}`
+export const getRiskReportURL = ({ id }, filters) => `/report/${filters.advanced_settings ? 'advanced_risk' : 'risk'}/widget/${id}?p=${Base64.encode(JSON.stringify(filters))}`
 
 export const generateRiskDownloadURL = ({ id }, filters, format) => {
   const { common, risk } = filters;

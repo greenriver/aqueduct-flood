@@ -14,7 +14,8 @@ export default connect(
       ...state.filters.common,
       ...['risk', 'advanced_risk'].includes(state.app.tab) ?
         { ...state.filters.risk } : { ...state.filters.cba }
-    }
+    },
+    layout: state.router.type
   }),
   {
     getCountryDefaults,

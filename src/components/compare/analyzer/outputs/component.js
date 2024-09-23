@@ -20,6 +20,7 @@ import MultiLineSpec from 'components/widgets/specs/cba/multi-line';
 // utils
 import {
   getCbaPreviewURL,
+  getCbaReportURL,
   generateCbaDownloadURL
 } from 'utils/share';
 import { logEvent } from 'utils/analytics';
@@ -151,6 +152,10 @@ class AnalyzerCompareOutputs extends Component {
         document.body.removeChild(link);
       })
 
+    }
+    
+    if (option === 'report') {
+      window.open(`#${getCbaReportURL(widget, filters)}`)
     }
 
     logEvent('[AQ-Flood]', `hazard tab: user downloads widget "${widget.id}" in format:`, option);

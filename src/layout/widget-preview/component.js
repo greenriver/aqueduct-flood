@@ -39,7 +39,7 @@ class EmbedWidget extends PureComponent {
   }
 
   render() {
-    const { tab, widget, filters } = this.props;
+    const { tab, widget, filters, layout } = this.props;
     const Widget = ['risk', 'advanced_risk'].includes(tab) ? RiskWidget : AnalyzerWidget;
     const widgetTitle = replace(widget.params.title, {
       ...filters,
@@ -50,6 +50,7 @@ class EmbedWidget extends PureComponent {
       <LayoutPreview
         title={widgetTitle}
         description={`${widgetTitle} | Aqueduct Flood`}
+        layout={layout}
       >
         <section className="l-preview-widget">
           <Widget

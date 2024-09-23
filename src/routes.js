@@ -12,6 +12,7 @@ export const ROUTES = {
   home: `/:tab?`,
   compare: `/compare/:tab?`,
   'widget-preview': `/preview/:tab/widget/:id`,
+  'widget-print': `/report/:tab/widget/:id`,
   'cba-embed': `/embed/cba`,
   'cba-embed-compare': `/embed/cba/compare`,
   'widget-embed': `/embed/:tab/widget/:id`,

@@ -19,7 +19,7 @@ import FloodDriversSpec from 'components/widgets/specs/risk/advanced/flood_drive
 import LPCurveSpec from 'components/widgets/specs/risk/advanced/lp_curve';
 
 // utils
-import { getRiskPreviewURL, generateRiskDownloadURL } from 'utils/share';
+import { getRiskPreviewURL, generateRiskDownloadURL, getRiskReportURL } from 'utils/share';
 import { logEvent } from 'utils/analytics';
 
 // constants
@@ -135,6 +135,10 @@ class RiskCompareOutputs extends Component {
         document.body.removeChild(link);
       })
 
+    }
+
+    if (option === 'report') {
+      window.open(getRiskReportURL(widget, filters))
     }
 
     logEvent('[AQ-Flood]', `risk compare tab: user downloads widget "${widget.id}" in format:`, option);

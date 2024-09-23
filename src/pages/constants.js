@@ -10,6 +10,7 @@ export const PAGES_DICTIONARY = {
   home: HomePage,
   compare: ComparePage,
   'widget-preview': WidgetPreview,
+  'widget-print': WidgetPreview,
   'widget-embed': WidgetEmbed,
   'cba-embed': CBAEmbed,
   'cba-embed-compare': CBAEmbedCompare
