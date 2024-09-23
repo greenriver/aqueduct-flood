@@ -14,21 +14,21 @@ export const BASEMAPS = {
   },
   terrain: {
     id: 'terrain',
-    value: `https://api.mapbox.com/styles/v1/resourcewatch/cjhqi456h02pg2rp6w2mwp61c/tiles/256/{z}/{x}/{y}?access_token=${process.env.REACT_APP_MAPBOX_API_TOKEN}`,
+    value: `https://api.mapbox.com/styles/v1/resourcewatch/cjhqi456h02pg2rp6w2mwp61c/tiles/512/{z}/{x}/{y}?access_token=${process.env.REACT_APP_MAPBOX_API_TOKEN}`,
     label: 'Terrain',
-    options: { attribution: '<a href="https://www.mapbox.com/about/maps/" target="_blank">© Mapbox</a> <a href="http://www.openstreetmap.org/about/" target="_blank">© OpenStreetMap</a>' }
+    options: { zoomOffset: -1, tileSize: 512, attribution: '<a href="https://www.mapbox.com/about/maps/" target="_blank">© Mapbox</a> <a href="http://www.openstreetmap.org/about/" target="_blank">© OpenStreetMap</a>' }
   },
   hydro: {
     id: 'hydro',
-    value: `https://api.mapbox.com/styles/v1/resourcewatch/cjtr6fhr3060g1fok829tfwm7/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_API_TOKEN}`,
+    value: `https://api.mapbox.com/styles/v1/resourcewatch/cjtr6fhr3060g1fok829tfwm7/tiles/512/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_API_TOKEN}`,
     label: 'Hydrography',
-    options: { attribution: '<a href="https://www.mapbox.com/about/maps/" target="_blank">© Mapbox</a> <a href="http://www.openstreetmap.org/about/" target="_blank">© OpenStreetMap</a>' }
+    options: { zoomOffset: -1, tileSize: 512, attribution: '<a href="https://www.mapbox.com/about/maps/" target="_blank">© Mapbox</a> <a href="http://www.openstreetmap.org/about/" target="_blank">© OpenStreetMap</a>' }
   }
 };
 
 export const LABEL_LAYER_CONFIG = {
-  url: `https://api.mapbox.com/styles/v1/resourcewatch/ckae642b911g51ip324e0c4pr/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_API_TOKEN}`,
-  options: { attribution: '&copy; <a href="http://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>' }
+  url: `https://api.mapbox.com/styles/v1/resourcewatch/ckae642b911g51ip324e0c4pr/tiles/512/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_API_TOKEN}`,
+  options: { zoomOffset: -1, tileSize: 512, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>' }
 };
 
 export default {
